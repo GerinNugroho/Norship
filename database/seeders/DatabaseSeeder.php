@@ -90,5 +90,10 @@ class DatabaseSeeder extends Seeder
                 ]);
             });
         });
+
+
+        $this->call([
+            TestingSeeder::class,
+        ]);
     }
 }

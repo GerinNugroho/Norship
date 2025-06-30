@@ -18,7 +18,8 @@ class authController extends Controller
                 'status' => false,
                 'message' => 'Proses login gagal!',
             ], 404);
-        };
+        }
+        ;
 
         $user = User::where('email', $validated['email'])->first();
 
@@ -52,7 +53,11 @@ class authController extends Controller
 
     public function logout(Request $request)
     {
-        $request->user()->currentAccessToken()->delete();
+        /** @var \Laravel\Sanctum\PersonalAccessToken $token */
+        
+        $token = $request->user()->currentAccessToken();
+        $token->delete();
+
         return response()->json([
             'status' => true,
             'message' => 'Logout telah berhasil!'
