@@ -16,7 +16,7 @@ class authController extends Controller
         if (!Auth::attempt($validated)) {
             return response()->json([
                 'status' => false,
-                'message' => 'Login gagal!',
+                'message' => 'Proses login gagal!',
             ], 404);
         };
 
@@ -26,9 +26,9 @@ class authController extends Controller
 
         return response()->json([
             'status' => true,
-            'message' => 'berhasil login!',
+            'message' => 'Proses login berhasil!',
             'token' => $token
-        ]);
+        ], 200);
     }
 
     public function signUp(signUpRequestUser $request)
@@ -46,7 +46,7 @@ class authController extends Controller
         ]);
         return response()->json([
             'status' => true,
-            'message' => 'data berhasil ditambahkan!'
+            'message' => 'Proses registrasi berhasil!'
         ], 201);
     }
 
@@ -54,8 +54,8 @@ class authController extends Controller
     {
         $request->user()->currentAccessToken()->delete();
         return response()->json([
-            'status' => false,
-            'message' => 'logout berhasil!'
-        ]);
+            'status' => true,
+            'message' => 'Logout telah berhasil!'
+        ], 200);
     }
 }
