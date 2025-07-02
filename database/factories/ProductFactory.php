@@ -2,7 +2,10 @@
 
 namespace Database\Factories;
 
+use App\Models\Category;
+use App\Models\Store;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Product>
@@ -16,12 +19,13 @@ class ProductFactory extends Factory
      */
     public function definition(): array
     {
+        $name = fake()->words(3, true);
         return [
-            'name' => $this->faker->words(2, true),
-            'description' => $this->faker->paragraph(),
-            'summary' => $this->faker->sentence,
-            'cover' => $this->faker->imageUrl(400, 300, 'tech'),
-            'created_at' => now(),
+            'store_id' => Store::factory(),
+            'category_id' => Category::factory(),
+            'name' => ucwords($name),
+            'slug' => Str::slug($name),
+            'description' => fake()->realText(400),
         ];
     }
 }

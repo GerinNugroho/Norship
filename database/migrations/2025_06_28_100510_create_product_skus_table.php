@@ -11,15 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('product_skus', function (Blueprint $table) {
+        Schema::create('products_skus', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('product_id')->constrained('products')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('sku');
-            $table->foreignId('size_attribute_id')->constrained('product_attributes')->onDelete('cascade')->onUpdate('cascade')->nullable();
-            $table->foreignId('color_attribute_id')->constrained('product_attributes')->onDelete('cascade')->onUpdate('cascade')->nullable();
-            $table->decimal('price', 10, 2);
-            $table->integer('quantity')->default(1);
+            $table->foreignId('product_id')->constrained()->onDelete('cascade');
+            $table->string('sku')->nullable();
+            $table->decimal('price', 12, 2);
+            $table->unsignedInteger('quantity')->default(0);
+            $table->string('image_url')->nullable();
             $table->timestamps();
+
+            $table->unique(['product_id', 'sku']);
         });
     }
 

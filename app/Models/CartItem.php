@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class CartItem extends Model
 {
@@ -11,18 +12,17 @@ class CartItem extends Model
 
     protected $fillable = [
         'cart_id',
-        'product_id',
         'products_sku_id',
         'quantity',
     ];
 
-    public function cart()
+    public function cart(): BelongsTo
     {
         return $this->belongsTo(Cart::class);
     }
 
-    public function product()
+    public function productSku(): BelongsTo
     {
-        return $this->belongsTo(Product::class);
+        return $this->belongsTo(ProductSku::class, 'products_sku_id');
     }
 }

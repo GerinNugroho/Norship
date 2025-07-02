@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Product;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,10 +18,11 @@ class ProductSkuFactory extends Factory
     public function definition(): array
     {
         return [
-            'sku' => strtoupper($this->faker->bothify('???###???#')),
-            'price' => $this->faker->randomFloat(2, 10, 1000),
-            'quantity' => $this->faker->numberBetween(1, 100),
-            'created_at' => now(),
+            'product_id' => Product::factory(),
+            'sku' => strtoupper(fake()->bothify('??-####')),
+            'price' => fake()->randomFloat(2, 50000, 1000000),
+            'quantity' => fake()->numberBetween(0, 100),
+            'image_url' => fake()->imageUrl(640, 480, 'technics'),
         ];
     }
 }

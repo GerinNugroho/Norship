@@ -4,32 +4,24 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class ProductSku extends Model
 {
     use HasFactory;
 
+    protected $table = 'products_skus'; // Explicitly define table name
+
     protected $fillable = [
         'product_id',
         'sku',
-        'size_attribute_id',
-        'color_attribute_id',
         'price',
         'quantity',
+        'image_url',
     ];
 
-    public function product()
+    public function product(): BelongsTo
     {
         return $this->belongsTo(Product::class);
-    }
-
-    public function color()
-    {
-        return $this->belongsTo(ProductAttribute::class, 'color_attribute_id');
-    }
-
-    public function size()
-    {
-        return $this->belongsTo(ProductAttribute::class, 'size_attribute_id');
     }
 }

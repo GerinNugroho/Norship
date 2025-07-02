@@ -12,6 +12,8 @@ class Address extends Model
     protected $fillable = [
         'user_id',
         'title',
+        'recipient_name',
+        'phone_number',
         'address_1',
         'address_2',
         'country',
@@ -19,7 +21,7 @@ class Address extends Model
         'regency',
         'district',
         'postal_code',
-        'phone_number',
+        'is_default',
     ];
 
     public function user()

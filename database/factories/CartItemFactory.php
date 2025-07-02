@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Cart;
+use App\Models\ProductSku;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,9 +19,9 @@ class CartItemFactory extends Factory
     public function definition(): array
     {
         return [
-            'quantity' => $this->faker->numberBetween(1, 5),
-            'created_at' => now(),
-            'updated_at' => now(),
+            'cart_id' => Cart::factory(),
+            'products_sku_id' => ProductSku::factory(),
+            'quantity' => fake()->numberBetween(1, 5),
         ];
     }
 }

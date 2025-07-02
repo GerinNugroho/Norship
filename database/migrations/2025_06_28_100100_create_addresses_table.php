@@ -14,6 +14,8 @@ return new class extends Migration {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
             $table->string('title');
+            $table->string('recipient_name');
+            $table->string('phone_number');
             $table->string('address_1');
             $table->string('address_2')->nullable();
             $table->string('country');
@@ -21,7 +23,7 @@ return new class extends Migration {
             $table->string('regency');
             $table->string('district');
             $table->string('postal_code');
-            $table->string('phone_number')->nullable();
+            $table->boolean('is_default')->default(false);
             $table->timestamps();
         });
     }
