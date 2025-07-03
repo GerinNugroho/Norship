@@ -17,8 +17,8 @@ class UserFactory extends Factory
      * @return array<string, mixed>
      */
 
-     protected static ?string $password;
-     
+    protected static ?string $password;
+
     public function definition(): array
     {
         return [
@@ -49,8 +49,15 @@ class UserFactory extends Factory
 
     public function admin(): static
     {
-        return $this->state(fn (array $attributes) => [
+        return $this->state(fn(array $attributes) => [
             'role' => 'admin',
+        ]);
+    }
+
+    public function superAdmin()
+    {
+        return $this->state(fn(array $attributes) => [
+            'role' => 'super admin'
         ]);
     }
 }

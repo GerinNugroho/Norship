@@ -38,16 +38,16 @@ class signUpRequestUser extends FormRequest
     public function messages()
     {
         return [
-            'first_name.required' => 'nama depan wajib diisi!',
-            'username.required' => 'username wajib diisi!',
-            'username.max' => 'username terlalu panjang!',
-            'email.required' => 'email wajib diisi!',
-            'email.email' => 'format penulisan email salah!',
-            'email.unique' => 'email sudah digunakan!',
-            'birth_of_date.date' => 'format penulisan waktu salah!',
-            'role.required' => 'role wajib diisi!',
-            'role.in' => 'role harus berisi user atau admin!',
-            'password.required' => 'password wajib diisi!'
+            'first_name.required' => 'Nama depan wajib diisi!',
+            'username.required' => 'Username wajib diisi!',
+            'username.max' => 'Username terlalu panjang!',
+            'email.required' => 'Email wajib diisi!',
+            'email.email' => 'Format penulisan email salah!',
+            'email.unique' => 'Email sudah digunakan!',
+            'birth_of_date.date' => 'Format penulisan waktu salah!',
+            'role.required' => 'Role wajib diisi!',
+            'role.in' => 'Role harus berisi user atau admin!',
+            'password.required' => 'Password wajib diisi!'
         ];
     }
 

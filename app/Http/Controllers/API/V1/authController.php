@@ -18,12 +18,9 @@ class authController extends Controller
                 'status' => false,
                 'message' => 'Proses login gagal!',
             ], 404);
-        }
-        ;
+        };
 
-        $user = User::where('email', $validated['email'])->first();
-
-        $token = $user->createToken('Token Login')->plainTextToken;
+        $token = $request->user()->createToken('auth_token')->plainTextToken;
 
         return response()->json([
             'status' => true,
@@ -35,16 +32,7 @@ class authController extends Controller
     public function signUp(signUpRequestUser $request)
     {
         $validated = $request->validated();
-        User::create([
-            'first_name' => $validated['first_name'],
-            'last_name' => $request['last_name'],
-            'username' => $validated['username'],
-            'password' => bcrypt($validated['password']),
-            'email' => $validated['email'],
-            'birth_of_date' => $validated['birth_of_date'],
-            'phone_number' => $validated['phone_number'],
-            'role' => $validated['role']
-        ]);
+        User::create($validated);
         return response()->json([
             'status' => true,
             'message' => 'Proses registrasi berhasil!'
@@ -54,13 +42,13 @@ class authController extends Controller
     public function logout(Request $request)
     {
         /** @var \Laravel\Sanctum\PersonalAccessToken $token */
-        
+
         $token = $request->user()->currentAccessToken();
         $token->delete();
 
         return response()->json([
             'status' => true,
-            'message' => 'Logout telah berhasil!'
+            'message' => 'Berhasil logout!'
         ], 200);
     }
 }

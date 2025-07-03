@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\API\V1\authController;
 use App\Http\Controllers\API\V1\profileController;
+use App\Http\Controllers\API\V1\storeController;
 use App\Http\Controllers\API\V1\userController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,15 +19,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('v1')->group(function () {
 
-    Route::post('signup', [authController::class, 'signUp'])->name(name: 'signup');
-    Route::post('login', [authController::class, 'login'])->name(name: 'login');
+    Route::post('/signup', [authController::class, 'signUp'])->name(name: 'signup');
+    Route::post('/login', [authController::class, 'login'])->name(name: 'login');
 
     Route::middleware('auth:sanctum')->group(function () {
-        Route::post('logout', [authController::class, 'logout'])->name(name: 'logout');
-        Route::get('profile', [profileController::class,  'profile'])->name(name: 'profile');
-
-        // Routes that require both a token AND the 'admin' role.
-        Route::middleware('role:admin')->group(function () {
+        Route::post('/logout', [authController::class, 'logout'])->name(name: 'logout');
+        Route::apiResource('profile', profileController::class);
+        Route::apiResource('store', storeController::class);
+        // Routes that require both a token AND the 'super admin' role.
+        Route::middleware('role:super admin')->group(function () {
             Route::apiResource('users', userController::class);
         });
     });

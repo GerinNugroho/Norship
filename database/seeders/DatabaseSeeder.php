@@ -32,15 +32,23 @@ class DatabaseSeeder extends Seeder
         User::factory()->admin()->create([
             'first_name' => 'Admin',
             'email' => 'admin@example.com',
+            'password' => 'admin1234'
+        ]);
+
+        User::factory()->superAdmin()->create([
+            'first_name' => 'Super Admin',
+            'email' => 'superadmin@example.com',
+            'password' => 'admin1234'
         ]);
 
         User::factory()->create([
             'first_name' => 'User',
             'email' => 'user@example.com',
+            'password' => 'admin1234'
         ]);
 
         // 2. Create a set of regular users
-        $users = User::factory(20)->create();
+        $users = User::factory(count: 20)->create();
 
         // 3. Create global categories for products
         $parentCategories = Category::factory(5)->create();
