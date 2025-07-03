@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\V1\authController;
+use App\Http\Controllers\API\V1\productController;
 use App\Http\Controllers\API\V1\profileController;
 use App\Http\Controllers\API\V1\storeController;
 use App\Http\Controllers\API\V1\userController;
@@ -26,6 +27,9 @@ Route::prefix('v1')->group(function () {
         Route::post('/logout', [authController::class, 'logout'])->name(name: 'logout');
         Route::apiResource('profile', profileController::class);
         Route::apiResource('store', storeController::class);
+        Route::middleware('role:admin')->group(function () {
+            Route::apiResource('products', productController::class);
+        });
         // Routes that require both a token AND the 'super admin' role.
         Route::middleware('role:super admin')->group(function () {
             Route::apiResource('users', userController::class);
