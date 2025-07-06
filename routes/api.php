@@ -1,11 +1,13 @@
 <?php
 
-use App\Http\Controllers\API\V1\authController;
-use App\Http\Controllers\API\V1\productController;
-use App\Http\Controllers\API\V1\profileController;
-use App\Http\Controllers\API\V1\storeController;
-use App\Http\Controllers\API\V1\userController;
+use App\Http\Controllers\API\V1\userControllerSU;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\API\V1\productController;
+use App\Http\Controllers\API\V1\authController;
+use App\Http\Controllers\API\V1\storeController;
+use App\Http\Controllers\API\V1\addressController;
+use App\Http\Controllers\API\V1\cartController;
+use App\Http\Controllers\API\V1\orderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,19 +22,35 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('v1')->group(function () {
 
-    Route::post('/signup', [authController::class, 'signUp'])->name(name: 'signup');
-    Route::post('/login', [authController::class, 'login'])->name(name: 'login');
-
+    Route::post('register', [authController::class, 'signUp']);
+    ROute::post('login', [authController::class, 'signIn']);
     Route::middleware('auth:sanctum')->group(function () {
-        Route::post('/logout', [authController::class, 'logout'])->name(name: 'logout');
-        Route::apiResource('profile', profileController::class);
-        Route::apiResource('store', storeController::class);
+        Route::post('logout', [authController::class, 'signOut']);
+
+        Route::get('profile', [authController::class, 'profile']);
+
+        Route::post('create/store', [storeController::class, 'createStore']);
+
+        Route::post('cart', [cartController::class, 'addCart']);
+        Route::get('cart', [cartController::class, 'showCart']);
+        Route::delete('cart/{id}', [cartController::class, 'clearCart']);
+
+        Route::get('products', [productController::class, 'showProducts']);
+        Route::get('products/category/{id}', [productController::class, 'showProductInCategory']);
+
+        Route::apiResource('addresses', addressController::class);
+
+        Route::post('order/create', [orderController::class, 'create']);
+
         Route::middleware('role:admin')->group(function () {
-            Route::apiResource('products', productController::class);
+            Route::put('admin/edit/store/{id}', [storeController::class, 'editStore']);
+
+            Route::post('admin/add/product', [productController::class, 'addProduct']);
         });
+
         // Routes that require both a token AND the 'super admin' role.
         Route::middleware('role:super admin')->group(function () {
-            Route::apiResource('users', userController::class);
+            //dikejar deadline, jadi belum
         });
     });
 });

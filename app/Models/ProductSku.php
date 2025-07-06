@@ -24,4 +24,13 @@ class ProductSku extends Model
     {
         return $this->belongsTo(Product::class);
     }
+
+    protected static function booted()
+    {
+        static::creating(function ($product) {
+            if (empty($product->sku)) {
+                $product->sku = strtoupper(fake()->bothify('??-####'));
+            };
+        });
+    }
 }

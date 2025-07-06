@@ -6,7 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class signUpRequestUser extends FormRequest
+class signUpRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,31 +26,12 @@ class signUpRequestUser extends FormRequest
         return [
             'first_name' => 'required',
             'last_name' => 'nullable',
-            'username' => 'required|max:50',
+            'username' => 'required',
             'email' => 'required|email|unique:users,email',
             'password' => 'required',
-            'birth_of_date' => 'nullable|date',
-            'phone_number' => 'nullable',
-            'role' => 'required|in:user,admin'
+            'phone_number' => 'required',
         ];
     }
-
-    public function messages()
-    {
-        return [
-            'first_name.required' => 'Nama depan wajib diisi!',
-            'username.required' => 'Username wajib diisi!',
-            'username.max' => 'Username terlalu panjang!',
-            'email.required' => 'Email wajib diisi!',
-            'email.email' => 'Format penulisan email salah!',
-            'email.unique' => 'Email sudah digunakan!',
-            'birth_of_date.date' => 'Format penulisan waktu salah!',
-            'role.required' => 'Role wajib diisi!',
-            'role.in' => 'Role harus berisi user atau admin!',
-            'password.required' => 'Password wajib diisi!'
-        ];
-    }
-
     protected function failedValidation(Validator $validator)
     {
         $errors = $validator->errors()->all();

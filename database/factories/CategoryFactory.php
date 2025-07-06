@@ -19,7 +19,7 @@ class CategoryFactory extends Factory
     {
         $name = fake()->unique()->words(2, true);
         return [
-            'parent_id' => null, // Top-level category by default
+            // 'parent_id' => null,// Top-level category by default
             'name' => ucwords($name),
             'slug' => Str::slug($name),
             'icon_url' => fake()->imageUrl(100, 100, 'abstract'),

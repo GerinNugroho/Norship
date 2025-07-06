@@ -6,7 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class createProductRequest extends FormRequest
+class editStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,28 +24,10 @@ class createProductRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'category_id' => 'required|exists:categories,id',
-            'name' => 'required',
+            'name' => 'nullable',
             'description' => 'nullable',
-            'sku' => 'required',
-            'price' => 'required|numeric',
-            'quatity' => 'requierd|integer|min:1',
-            'image_url' => 'nullable'
-        ];
-    }
-
-    public function messages()
-    {
-        return [
-            'name' => 'Nama wajib diisi!',
-            'category_id.required' => 'Category wajib diisi!',
-            'category_id.exists' => 'Category tidak ada!',
-            'sku.required' => 'SKU wajib diisi!',
-            'price.required' => 'Harga wajib diisi!',
-            'price.numeric' => 'Harga harus berupa angka!',
-            'quantity.required' => 'Stok product wajib diisi!',
-            'quantity.integer' => 'Stok harus berupa angka!',
-            'quantity.min' => 'Setidak stok lebih dari 0!'
+            'logo_url' => 'nullable',
+            'address' => 'nullable',
         ];
     }
 

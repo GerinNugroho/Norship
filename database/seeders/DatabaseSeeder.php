@@ -51,10 +51,10 @@ class DatabaseSeeder extends Seeder
         $users = User::factory(count: 20)->create();
 
         // 3. Create global categories for products
-        $parentCategories = Category::factory(5)->create();
-        $parentCategories->each(function ($parent) {
-            Category::factory(rand(2, 4))->create(['parent_id' => $parent->id]);
-        });
+        Category::factory(5)->create();
+        // $parentCategories->each(function ($parent) {
+        //     Category::factory(rand(2, 4))->create(['parent_id' => $parent->id]);
+        // });
         $allCategories = Category::all();
 
         // 4. Select some users to become sellers and create stores for them

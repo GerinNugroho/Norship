@@ -6,7 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class loginRequestUser extends FormRequest
+class addAddressRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,17 +24,16 @@ class loginRequestUser extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => 'required|email',
-            'password' => 'required'
-        ];
-    }
-
-    public function messages()
-    {
-        return [
-            'email.required' => 'Email wajib diisi!',
-            'email.email' => 'Format penulisan email salah!',
-            'password.required' => 'Password wajib diisi!'
+            'title' => 'required|unique:addresses,title',
+            'recipient_name' => 'required',
+            'phone_number' => 'required',
+            'address_1' => 'required',
+            'address_2' => 'nullable',
+            'country' =>  'required',
+            'province' => 'required',
+            'regency' => 'required',
+            'district' => 'required',
+            'postal_code' => 'required',
         ];
     }
 

@@ -2,53 +2,65 @@
 
 namespace App\Http\Controllers\API\V1;
 
-use App\Http\Requests\loginRequestUser;
-use App\Http\Requests\signUpRequestUser;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Requests\signInRequest;
+use App\Http\Requests\signUpRequest;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\API\V1\Controller;
 
 class authController extends Controller
 {
-    public function login(loginRequestUser $request)
+    public function signUp(signUpRequest $request)
+    {
+        $validated = $request->validated();
+        $user = User::create($validated);
+        return response()->json([
+            'status' => true,
+            'message' => 'Register berhasil',
+            'data' => $user
+        ], 201);
+    }
+
+    public function signIn(signInRequest $request)
     {
         $validated = $request->validated();
         if (!Auth::attempt($validated)) {
             return response()->json([
                 'status' => false,
-                'message' => 'Proses login gagal!',
+                'message' => 'User tidak ada!',
+                'data' => null
             ], 404);
-        };
+        }
+        $user = User::where('email', $validated['email'])->first();
 
-        $token = $request->user()->createToken('auth_token')->plainTextToken;
+        $token = $user->createToken('Auth Token')->plainTextToken;
 
         return response()->json([
             'status' => true,
-            'message' => 'Proses login berhasil!',
-            'token' => $token
+            'message' => 'Login berhasil!',
+            'token' => $token,
+            'data' => $user
         ], 200);
     }
 
-    public function signUp(signUpRequestUser $request)
+    public function signOut(Request $request)
     {
-        $validated = $request->validated();
-        User::create($validated);
+        $request->user()->currentAccessToken()->delete();
         return response()->json([
             'status' => true,
-            'message' => 'Proses registrasi berhasil!'
-        ], 201);
+            'message' => 'User logout!',
+            'data' => $request->user()
+        ], 200);
     }
 
-    public function logout(Request $request)
+    public function profile()
     {
-        /** @var \Laravel\Sanctum\PersonalAccessToken $token */
-
-        $token = $request->user()->currentAccessToken();
-        $token->delete();
+        $user = User::with('store')->find(Auth::user()->id);
 
         return response()->json([
             'status' => true,
-            'message' => 'Berhasil logout!'
-        ], 200);
+            'data' => $user
+        ]);
     }
 }
