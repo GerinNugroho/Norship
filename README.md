@@ -1,66 +1,172 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<h1 align="center">
+ Norship
+</h1>
+
+<h1 align="center">
+ Norship
+</h1>
 
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+ Seimbang.in adalah aplikasi mobile manajemen keuangan yang memanfaatkan teknologi AI untuk membantu masyarakat Indonesia memperbaiki pengelolaan finansial mereka. Dengan menyediakan tips personal, pemindaian struk belanja via OCR, dan saran keuangan yang efektif, Seimbang.in mempermudah proses membangun kebiasaan finansial yang baik. Tujuan kami adalah memberdayakan pengguna untuk mencapai stabilitas finansial dan kesuksesan jangka panjang.
 </p>
 
-## About Laravel
+<p align="center">
+    <a href="#">
+      <img src="https://img.shields.io/badge/status-prototipe-yellow" alt="Status Proyek">
+    </a>
+    <a href="#">
+      <img src="https://img.shields.io/badge/license-MIT-blue" alt="Lisensi">
+    </a>
+</p>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 🌐 Akses Demo & Akun Pengujian
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Untuk mempermudah juri/penguji, kami telah menyediakan prototipe yang dapat diakses secara online serta akun demo.
 
-## Learning Laravel
+-   **Link Demo**: `[MASUKKAN LINK DEPLOY PROYEK DI SINI]` (optional)
+-   **Link Postman / Dokumentasi API** : `[MASUKKAN LINK DOKUMENTASI API DISINI]`
+-   **Email**: `admin@gmail.com`
+-   **Password**: `admin12345`
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+---
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## ✨ Tampilan Web
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+<p align="center">
+  <img src="https://via.placeholder.com/200x400.png?text=Halaman+Login" width="200" alt="Halaman Login">
+  <img src="https://via.placeholder.com/200x400.png?text=Halaman+Dashboard" width="200" alt="Halaman Dashboard">
+  <img src="https://via.placeholder.com/200x400.png?text=Halaman+Tambah+Transaksi" width="200" alt="Halaman Tambah Transaksi">
+</p>
 
-## Laravel Sponsors
+---
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+## 📝 Status Prototipe
 
-### Premium Partners
+Repositori ini berisi prototipe untuk proyek final. Tidak semua fitur yang tercantum dalam deskripsi telah diimplementasikan sepenuhnya. Fokus kami untuk fase ini adalah menghadirkan fungsionalitas inti yang solid.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+**Fitur yang Sudah Diimplementasikan:**
 
-## Contributing
+-   [x] Autentikasi Pengguna (Login & Register)
+-   [x] Pelacakan Pemasukan & Pengeluaran (Tambah, Lihat)
+-   [ ] Manajemen Transaksi (Ubah, Hapus)
+-   [ ] Pemindaian Struk Otomatis (OCR)
+-   [ ] Penasihat Keuangan AI
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+---
 
-## Code of Conduct
+## 🌟 Fitur Aplikasi
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Berikut adalah fitur-fitur yang kami rencanakan untuk Seimbang.in:
 
-## Security Vulnerabilities
+### 1. Manajemen Keuangan
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+-   **Pelacakan Pengeluaran & Pemasukan**: Fitur inti untuk melacak dan memonitor pengeluaran serta pemasukan pengguna secara _real-time_ dengan kemampuan kategorisasi transaksi.
+-   **Manajemen Transaksi**: Pengguna dapat dengan mudah mengelola transaksi mereka, termasuk menambah, mengubah, atau menghapus data keuangan.
 
-## License
+### 2. Pemindaian Struk Otomatis
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+-   **Integrasi OCR**: Memanfaatkan _Optical Character Recognition_ (OCR) untuk membaca dan mengekstrak data dari struk pembelian secara otomatis, meminimalkan input manual.
+-   **Strukturisasi Data**: Informasi dari struk diolah menjadi data terstruktur seperti nama barang, harga, dan tanggal transaksi untuk langsung dimasukkan ke catatan keuangan pengguna.
+
+### 3. AI Advisor
+
+-   **Saran Keuangan Personal**: Memberikan saran keuangan yang dipersonalisasi berdasarkan profil keuangan pengguna. AI menganalisis pola pengeluaran dan pemasukan untuk memberikan rekomendasi tabungan atau investasi yang sesuai.
+-   **Asisten Chatbot**: Chatbot bertenaga AI (misal, Gemini AI) memungkinkan pengguna berinteraksi dengan mudah dan menerima saran _real-time_ untuk pengambilan keputusan finansial.
+
+---
+
+## 🛠️ Tech Stack
+
+-   **Frontend**: `[Contoh: React, Next.js, TypeScript]`
+-   **Backend**: `[Contoh: Node.js, Express.js, TypeScript]`
+-   **Database**: `[Contoh: PostgreSQL, MongoDB]`
+-   **AI**: `[Contoh: Google Gemini API]`
+-   **Lainnya**: `[Contoh: Prisma ORM, Zustand, TailwindCSS]`
+
+---
+
+## 🚀 Cara Menjalankan Proyek Secara Lokal
+
+### Pre-requisite
+
+-   Node.js (v18++)
+-   npm atau yarn
+-   Php
+-   composer
+-   Git
+
+### Backend (PHP Laravel)
+
+1.  **Clone repositori ini:**
+
+    ```bash
+    git clone [https://github.com/username/nama-repo.git](https://github.com/username/nama-repo.git)
+    cd nama-repo
+    ```
+
+2.  **Install dependency via Composer:**
+
+    ```bash
+    composer install
+    ```
+
+3.  **Salin file environment:**
+
+    ```bash
+    cp .env.example .env
+    ```
+
+4.  **Generate application key:**
+
+    ```bash
+    php artisan key:generate
+    ```
+
+5.  **Konfigurasi database di file `.env` kamu.**
+
+6.  **Jalankan migrasi database:**
+
+    ```bash
+    php artisan migrate
+    ```
+
+7.  **Jalankan server lokal:**
+    ```bash
+    php artisan serve
+    ```
+    Backend akan berjalan di `http://localhost:8000`.
+
+---
+
+### Frontend (Tailwind CLI)
+
+1.  **Pindah ke direktori frontend (jika terpisah):**
+
+    ```bash
+    # Jika frontend berada di folder terpisah, pindah ke folder tersebut
+    # Contoh: cd ../frontend
+    ```
+
+2.  **Install dependency Node.js:**
+
+    ```bash
+    npm install
+    ```
+
+3.  **Jalankan Tailwind CLI untuk memantau dan build CSS:**
+    ```bash
+    npm run watch
+    ```
+    Pastikan file HTML kamu sudah terhubung dengan file `output.css` yang dihasilkan oleh Tailwind.
+
+---
+
+## 👨‍💻 Tim Kami
+
+-   Hatsune MIku
+-   Kasane Teto
+-   Akita Neru
+
+---
