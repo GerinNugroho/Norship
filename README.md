@@ -32,14 +32,15 @@ Repositori ini berisi prototipe untuk proyek final. Belum semua fitur telah diim
 **Fitur yang Sudah Diimplementasikan:**
 
 Backend side (API):
-- [x] Authentication (Login & Register)
-- [x] Cart
-- [x] User Profile
-- [x] Store
-- [x] Product Management
-- [x] Product in categories
-- [ ] Payment Gateway
-- [ ] Order
+
+-   [x] Authentication (Login & Register)
+-   [x] Cart
+-   [x] User Profile
+-   [x] Store
+-   [x] Product Management
+-   [x] Product in categories
+-   [ ] Payment Gateway
+-   [ ] Order
 
 Database Schema details: https://dbdiagram.io/d/norship_multi_store-68628055f413ba3508870c3e
 
@@ -50,46 +51,53 @@ Database Schema details: https://dbdiagram.io/d/norship_multi_store-68628055f413
 Fitur yang kami rencanakan untuk Norship:
 
 ### Fokus Fitur: Membangun Ekosistem Marketplace Multi-Toko
+
 Platform kami adalah sebuah marketplace terpadu yang memberdayakan ribuan penjual untuk mengelola toko mereka secara mandiri, sambil memberikan pembeli pengalaman berbelanja yang mulus dari berbagai toko melalui fitur pencarian terpusat, keranjang belanja universal, dan satu kali checkout yang aman.
 
 ---
 
 ## 🛠️ Tech Stack
-- **Frontend**: `[React, Next.js, TypeScript]`
-- **Backend**: `[Laravel]`
-- **Database**: `[MySql]`
-- **Lainnya**: `[TailwindCSS]`
+
+-   **Frontend**: `[React, Next.js, TypeScript]`
+-   **Backend**: `[Laravel]`
+-   **Database**: `[MySql]`
+-   **Lainnya**: `[TailwindCSS]`
 
 ---
 
 ## 🚀 Cara Menjalankan Proyek Secara Lokal
 
 ### Pre-requisite
-- Node.js (v18++)
-- npm
-- php
-- composer
-- Git
+
+-   Node.js (v18++)
+-   npm
+-   php
+-   composer
+-   Git
 
 ### Backend (PHP Laravel)
 
 1.  **Clone repositori ini:**
+
     ```bash
     git clone https://github.com/GerinNugroho/Norship.git
-    cd Norship 
+    cd Norship
     ```
 
 2.  **Install dependency via Composer:**
+
     ```bash
     composer install
     ```
 
 3.  **Salin file environment:**
+
     ```bash
     cp .env.example .env
     ```
 
 4.  **Generate application key:**
+
     ```bash
     php artisan key:generate
     ```
@@ -97,16 +105,24 @@ Platform kami adalah sebuah marketplace terpadu yang memberdayakan ribuan penjua
 5.  **Konfigurasi database di file `.env` kamu.**
 
 6.  **Jalankan migrasi database:**
+
     ```bash
     php artisan migrate:fresh --seed
     ```
 
-7.  **Jalankan server lokal:**
+7.  **install package untuk payment gateway nya:**
+
+    ```bash
+    composer require midtrans/midtrans-php
+    ```
+
+8.  **Jalankan server lokal:**
+
     ```bash
     php artisan serve
     ```
-    Backend akan berjalan di `http://localhost:8000`.
 
+    Backend akan berjalan di `http://localhost:8000`.
 
 Postman collection untuk testing API:
 https://drive.google.com/drive/folders/16fRpoak-5YlfbqymIm2lKmGtuX_V3k2O?usp=drive_link
@@ -114,13 +130,16 @@ https://drive.google.com/drive/folders/16fRpoak-5YlfbqymIm2lKmGtuX_V3k2O?usp=dri
 ---
 
 ### Frontend (Next.js)
- Belum diimplementasikan
- 
- Preview: https://github.com/jpangestu/norship-fe
+
+Belum diimplementasikan
+
+Preview: https://github.com/jpangestu/norship-fe
 
 ---
 
 ## 👨‍💻 Tim Kami
-- Gerin Nugroho
-- Tandang Pangestu
+
+-   Gerin Nugroho
+-   Tandang Pangestu
+
 ---
