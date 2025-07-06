@@ -107,6 +107,10 @@ Platform kami adalah sebuah marketplace terpadu yang memberdayakan ribuan penjua
     ```
     Backend akan berjalan di `http://localhost:8000`.
 
+
+Postman collection untuk testing API:
+https://drive.google.com/drive/folders/16fRpoak-5YlfbqymIm2lKmGtuX_V3k2O?usp=drive_link
+
 ---
 
 ### Frontend (Next.js)
