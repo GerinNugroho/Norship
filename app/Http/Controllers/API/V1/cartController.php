@@ -4,67 +4,71 @@ namespace App\Http\Controllers\API\V1;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\API\V1\Controller;
-use App\Http\Requests\addCartRequest;
+use App\Http\Requests\AddCartRequest;
 use App\Models\Cart;
 use App\Models\CartItem;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Auth;
 
-class cartController extends Controller
+class CartController extends Controller
 {
-    public function addCart(addCartRequest $request)
+    public function addCart(AddCartRequest $request)
     {
         $validated = $request->validated();
-        $cart = null;
-        if (!Auth::user()->cart) {
-            $cart = Cart::create([
-                'user_id' => Auth::user()->id
-            ]);
-        } else {
-            $cart = Cart::find(Auth::user()->cart->id);
-        }
+        $user = Auth::user();
+
+        $cart = $user->cart ?? $user->cart()->create(['user_id' => $user->id]);
+
         $validated['cart_id'] = $cart->id;
 
         $cartItem = CartItem::create($validated);
 
         return response()->json([
             'status' => true,
-            'message' => 'masuk ke cart',
+            'message' => 'Masuk ke cart',
             'data' => $cartItem->with('productSku')->get()
         ], 201);
     }
 
     public function showCart()
     {
-        $carts = Cart::with('cartItems')->find(Auth::user()->cart->id);
-
+        $cart = Auth::user()->cart;
+        if (!$cart || $cart->cartItems->isEmpty()) {
+            return response()->json([
+                'status' => false,
+                'message' => 'Cart belum ada',
+                'data' => null
+            ], 404);
+        }
         return response()->json([
             'status' => true,
-            'data' => $carts
+            'message' => 'Berhasil mendapatkan cart',
+            'data' => $cart->with('cartItems')->get()
         ]);
     }
 
     public function clearCart(string $id)
     {
-        if (!Auth::user()->cart) {
+        $user = Auth::user();
+        if (!$user->cart || $user->cart->id != $id) {
             return response()->json([
                 'status' => false,
-                'message' => 'kesalahan berpikir!'
+                'message' => 'Cart tidak ada atau tidak punya anda'
             ], 404);
         }
         try {
             $cart = Cart::findOrFail($id);
+            $cart->delete();
+            return response()->json([
+                'status' => true,
+                'message' => 'Cart berhasil dihapus',
+            ], 200);
         } catch (ModelNotFoundException $e) {
             return response()->json([
                 'status' => false,
-                'message' => 'lain kali id nya diperhatikan ya!!'
+                'message' => 'Cart tidak ditemukan',
+                'error' => $e->getMessage()
             ], 404);
         }
-
-        $cart->delete();
-        return response()->json([
-            'status' => true,
-            'message' => 'cart dihapus!',
-        ]);
     }
 }

@@ -1,13 +1,12 @@
 <?php
 
-use App\Http\Controllers\API\V1\userControllerSU;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\API\V1\productController;
-use App\Http\Controllers\API\V1\authController;
-use App\Http\Controllers\API\V1\storeController;
-use App\Http\Controllers\API\V1\addressController;
-use App\Http\Controllers\API\V1\cartController;
-use App\Http\Controllers\API\V1\orderController;
+use App\Http\Controllers\API\V1\ProductController;
+use App\Http\Controllers\API\V1\AuthController;
+use App\Http\Controllers\API\V1\StoreController;
+use App\Http\Controllers\API\V1\AddressController;
+use App\Http\Controllers\API\V1\CartController;
+use App\Http\Controllers\API\V1\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,30 +21,30 @@ use App\Http\Controllers\API\V1\orderController;
 
 Route::prefix('v1')->group(function () {
 
-    Route::post('register', [authController::class, 'signUp']);
-    ROute::post('login', [authController::class, 'signIn']);
+    Route::post('register', [AuthController::class, 'signUp']);
+    Route::post('login', [AuthController::class, 'signIn']);
     Route::middleware('auth:sanctum')->group(function () {
-        Route::post('logout', [authController::class, 'signOut']);
+        Route::post('logout', [AuthController::class, 'signOut']);
 
-        Route::get('profile', [authController::class, 'profile']);
+        Route::get('profile', [AuthController::class, 'profile']);
 
-        Route::post('create/store', [storeController::class, 'createStore']);
+        Route::post('create/store', [StoreController::class, 'createStore']);
 
-        Route::post('cart', [cartController::class, 'addCart']);
-        Route::get('cart', [cartController::class, 'showCart']);
-        Route::delete('cart/{id}', [cartController::class, 'clearCart']);
+        Route::post('cart', [CartController::class, 'addCart']);
+        Route::get('cart', [CartController::class, 'showCart']);
+        Route::delete('cart/{id}', [CartController::class, 'clearCart']);
 
-        Route::get('products', [productController::class, 'showProducts']);
-        Route::get('products/category/{id}', [productController::class, 'showProductInCategory']);
+        Route::get('products', [ProductController::class, 'showProducts']);
+        Route::get('products/category/{id}', [ProductController::class, 'showProductInCategory']);
 
-        Route::apiResource('addresses', addressController::class);
+        Route::apiResource('addresses', AddressController::class);
 
-        Route::post('order/create', [orderController::class, 'create']);
+        Route::post('order/create', [OrderController::class, 'create']);
 
         Route::middleware('role:admin')->group(function () {
-            Route::put('admin/edit/store/{id}', [storeController::class, 'editStore']);
+            Route::put('admin/edit/store/{id}', [StoreController::class, 'editStore']);
 
-            Route::post('admin/add/product', [productController::class, 'addProduct']);
+            Route::post('admin/add/product', [ProductController::class, 'addProduct']);
         });
 
         // Routes that require both a token AND the 'super admin' role.

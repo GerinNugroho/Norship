@@ -6,7 +6,7 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class SignInRequest extends FormRequest
+class UpdateAddressRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,16 @@ class SignInRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => 'required|email',
-            'password' => 'required'
+            'title' => 'nullable|unique:addresses,title',
+            'recipient_name' => 'nullable',
+            'phone_number' => 'nullable',
+            'address_1' => 'nullable',
+            'address_2' => 'nullable',
+            'country' =>  'nullable',
+            'province' => 'nullable',
+            'regency' => 'nullable',
+            'district' => 'nullable',
+            'postal_code' => 'nullable',
         ];
     }
 

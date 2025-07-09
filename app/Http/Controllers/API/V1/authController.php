@@ -9,7 +9,7 @@ use App\Http\Requests\signUpRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\API\V1\Controller;
 
-class authController extends Controller
+class AuthController extends Controller
 {
     public function signUp(signUpRequest $request)
     {
@@ -17,7 +17,7 @@ class authController extends Controller
         $user = User::create($validated);
         return response()->json([
             'status' => true,
-            'message' => 'Register berhasil',
+            'message' => 'Registrasi berhasil',
             'data' => $user
         ], 201);
     }
@@ -28,9 +28,9 @@ class authController extends Controller
         if (!Auth::attempt($validated)) {
             return response()->json([
                 'status' => false,
-                'message' => 'User tidak ada!',
+                'message' => 'Email atau password salah!',
                 'data' => null
-            ], 404);
+            ], 401);
         }
         $user = User::where('email', $validated['email'])->first();
 
@@ -56,7 +56,7 @@ class authController extends Controller
 
     public function profile()
     {
-        $user = User::with('store')->find(Auth::user()->id);
+        $user = User::with('store')->find(Auth::id());
 
         return response()->json([
             'status' => true,

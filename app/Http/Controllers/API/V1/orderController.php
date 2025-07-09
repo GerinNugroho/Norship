@@ -7,7 +7,7 @@ use Midtrans\Config;
 use Illuminate\Http\Request;
 use App\Http\Controllers\API\V1\Controller;
 
-class orderController extends Controller
+class OrderController extends Controller
 {
     public function __construct()
     {
