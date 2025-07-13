@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\ProductSku;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\AddSKuRequest;
 use Illuminate\Support\Facades\Auth;
@@ -78,9 +79,14 @@ class ProductController extends Controller
         }
     }
 
-    public function showProducts()
+    public function showProducts(Request $request)
     {
-        $products = Product::with('skus')->get();
+        if ($request->has('limit')) {
+            $limit = (int) $request->input('limit');
+            $products = Product::take($limit)->get();
+        } else {
+            $products = Product::all();
+        }
         return response()->json([
             'status' => true,
             'message' => 'Berhasil mendapatkan semua produk',
