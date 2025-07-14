@@ -20,7 +20,7 @@ use App\Http\Controllers\API\V1\OrderController;
 */
 
 Route::prefix('v1')->group(function () {
-
+    Route::get('products', [ProductController::class, 'showProducts']);
     Route::post('register', [AuthController::class, 'signUp']);
     Route::post('login', [AuthController::class, 'signIn']);
     Route::middleware('auth:sanctum')->group(function () {
@@ -33,8 +33,6 @@ Route::prefix('v1')->group(function () {
         Route::post('cart', [CartController::class, 'addCart']);
         Route::get('cart', [CartController::class, 'showCart']);
         Route::delete('cart/{id}', [CartController::class, 'clearCart']);
-
-        Route::get('products', [ProductController::class, 'showProducts']);
         Route::get('products/category/{id}', [ProductController::class, 'showProductInCategory']);
 
         Route::apiResource('addresses', AddressController::class);
